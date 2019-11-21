@@ -55,11 +55,25 @@ public class ReloadObject : MonoBehaviour
 
         return false;
     }
+    bool HoldObjectParentCheck()
+    {
+        if(holdObject == null) { return false; }
+
+        if(holdObject.transform.parent == null)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 
     // オブジェクトを設置する
     void Reload()
     {
         if (ObjectCheck()) { return; }
+        if (HoldObjectParentCheck()) { return; }
 
         // 再設置オブジェクトのnullチェック
         if(reloadObject == null)
