@@ -1223,7 +1223,7 @@ GameObject:
   - component: {fileID: 1889886864}
   - component: {fileID: 1889886863}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: SoundTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1241,8 +1241,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e3c0d77bf4e7244a53c4d29af3715a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enable: 0
-  sound: {fileID: 0}
+  enable: 1
+  sound: {fileID: 8300000, guid: 311c6a70749dacb458e9261d7576d36c, type: 3}
+  loopTime: 0.1
 --- !u!4 &1889886864
 Transform:
   m_ObjectHideFlags: 0
