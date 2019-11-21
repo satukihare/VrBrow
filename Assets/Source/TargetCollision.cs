@@ -1,26 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TargetCollision : MonoBehaviour
 {
-    [SerializeField] GameObject target;
-
-    void Awake()
+    void Start()
     {
         
     }
 
     void Update()
     {
-        
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
         GameObject collisionObj = other.gameObject;
         if (!collisionObj.CompareTag("Arrow")) return;
 
-        // ToDo : ArrowをTargetの子オブジェクトにして現在位置に固定
+        Rigidbody[] rigs = collisionObj.GetComponentsInChildren<Rigidbody>();
+        BoxCollider[] cols = collisionObj.GetComponentsInChildren<BoxCollider>();
+        foreach(Rigidbody rig in rigs)
+        {
+            rig.velocity = Vector3.zero;
+            rig.useGravity = false;
+            rig.isKinematic = true;
+        }
+        foreach(BoxCollider col in cols)
+        {
+            col.enabled = false;
+        }
+
+        collisionObj.transform.parent = this.transform;
     }
 }
