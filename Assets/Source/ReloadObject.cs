@@ -14,10 +14,9 @@ public class ReloadObject : MonoBehaviour
     public GameObject reloadObject;     // 設置するオブジェクト
     public Vector3 reloadObjectOffset;  // オブジェクトのオフセット
     public float reloadTime;            // 再設置までの時間
-    public bool isObjectHoldInStart;    // 最初にオブジェクトを持っているか
 
-    GameObject holdObject;    // リロード済
-    float timer;    // 再設置時間計測
+    GameObject holdObject;  // リロード済
+    float timer;            // 再設置時間計測
     bool isTimerClear;
 
     // Start is called before the first frame update
@@ -28,11 +27,8 @@ public class ReloadObject : MonoBehaviour
         timer = 0;
         isTimerClear = false;
 
-        // 初期設定によりオブジェクトの設置
-        if (!isObjectHoldInStart)
-        {
-            Reload();
-        }
+        Reload();
+        TimerReset();
     }
 
     // Update is called once per frame
@@ -41,6 +37,7 @@ public class ReloadObject : MonoBehaviour
         if (isTimerClear)
         {
             Reload();
+            TimerReset();
         }
 
         TimeManager();
@@ -50,7 +47,7 @@ public class ReloadObject : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            if(child == reloadObject)
+            if(child.name == reloadObject.name + "(Clone)")
             {
                 return true;
             }
@@ -62,6 +59,8 @@ public class ReloadObject : MonoBehaviour
     // オブジェクトを設置する
     void Reload()
     {
+        if (ObjectCheck()) { return; }
+
         // 再設置オブジェクトのnullチェック
         if(reloadObject == null)
         {
@@ -71,10 +70,7 @@ public class ReloadObject : MonoBehaviour
 
         // オブジェクト設置
         holdObject = Instantiate(reloadObject, transform);
-        holdObject.transform.position = reloadObjectOffset;
-
-        // タイマーリセット
-        TimerReset();
+        holdObject.transform.localPosition = reloadObjectOffset;
     }
 
     // 再設置時間計測
