@@ -31,7 +31,7 @@ public class Bow : MonoBehaviour
 
         if(Input.GetButtonDown("Jump"))
         {
-            GameObject go = Instantiate(Resources.Load("Prefabs/Arrow"), this.transform) as GameObject;
+            GameObject go = Instantiate(Resources.Load("Takeuchi/Prefabs/Arrow"), this.transform) as GameObject;
             go.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 1000));
         }
     }
