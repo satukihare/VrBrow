@@ -68,6 +68,8 @@ public class Arrow : MonoBehaviour
                     break;
                 }
         }
+
+        FallArrowTask();
     }
 
     void CheckLimit()
@@ -79,6 +81,18 @@ public class Arrow : MonoBehaviour
         else if (transform.localPosition.x < -transform.localScale.y)
         {
             transform.localPosition = new Vector3(-transform.localScale.y, 0, -0.02f);
+        }
+    }
+
+    void FallArrowTask()
+    {
+        if (!m_Rigidbody.isKinematic)
+        {
+            var ver = m_Rigidbody.velocity;
+            var falldir = ver.normalized;
+
+            //落ちる方向を向くようにする
+            m_Rigidbody.MoveRotation(Quaternion.LookRotation(falldir));
         }
     }
 }
