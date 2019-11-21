@@ -2,10 +2,6 @@
 
 public class TargetCollision : MonoBehaviour
 {
-    [SerializeField] SphereCollider high;
-    [SerializeField] SphereCollider middle;
-    [SerializeField] SphereCollider low;
-
     void Start()
     {
         
