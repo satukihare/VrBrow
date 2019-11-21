@@ -741,9 +741,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reloadObject: {fileID: 4416297268483875234, guid: 1039ef75b4aa5564e86da88730e38a2c,
     type: 3}
-  reloadObjectOffset: {x: 0, y: 0, z: 0}
-  reloadTime: 0
-  isObjectHoldInStart: 0
+  reloadObjectOffset: {x: 0, y: 0, z: 0.7}
+  reloadTime: 2
+  isObjectHoldInStart: 1
 --- !u!1 &857664114
 GameObject:
   m_ObjectHideFlags: 0
