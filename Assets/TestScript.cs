@@ -6,7 +6,7 @@ public class TestScript : MonoBehaviour
 {
     public bool enable = true;
     public AudioClip sound = null;
-    public float loopTime = 0.1;
+    public float loopTime = 0.1f;
 
     private AudioSource audioSource;
     private float time;
