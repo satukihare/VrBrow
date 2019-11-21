@@ -23,11 +23,17 @@ public class BowMain : MonoBehaviour
         {
             return;
         }
-        if (!OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
+        if (!OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
         {
             return;
         }
+
         Arrow arrow = other.gameObject.GetComponent<Arrow>();
+
+        if(arrow.m_Status == Arrow.Status.HOLD)
+        {
+            return;
+        }
         arrow.m_Status = Arrow.Status.HOLD;
         other.gameObject.transform.parent = m_GObjBows.transform;
         other.gameObject.transform.localEulerAngles = new Vector3(0, 0, 90);
