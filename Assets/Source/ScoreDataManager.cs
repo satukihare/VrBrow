@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // スコアデータテーブル管理
-public class ScoreDataManager : MonoBehaviour
+public class ScoreDataManager : SingletonMonoBehavior<ScoreDataManager>
 {
     // =======================================================================
     //                              メンバ変数
@@ -12,19 +12,19 @@ public class ScoreDataManager : MonoBehaviour
     // 的の種類
     public enum TARGET_TYPE
     {
-        ROW,
-        NORMAL,
+        LOW,
+        MIDDLE,
         HIGH,
         MAX
     };
 
     // 外部入力値
     [SerializeField]
-    private int         m_nHighScoreTargetPoint;    // 高得点の的一枚当たりの得点
+    private int         m_nHighScoreTargetPoint = 5;    // 高得点の的一枚当たりの得点
     [SerializeField]
-    private int         m_nNormalScoreTargetPoint;  // 中得点の的一枚当たりの得点
+    private int         m_nMiddleScoreTargetPoint = 3;  // 中得点の的一枚当たりの得点
     [SerializeField]
-    private int         m_nRowScoreTargetPoint;     // 小得点の的一枚当たりの得点
+    private int         m_nLowScoreTargetPoint = 1;     // 小得点の的一枚当たりの得点
 
     [SerializeField]
     private ScoreData   m_pScoreDataObject;         // スコアデータテーブル
@@ -33,12 +33,14 @@ public class ScoreDataManager : MonoBehaviour
     //                              メンバ関数
     // =======================================================================
     // 初期化
-    private void InitializeScoreData()
+    void InitializeScoreData()
     {
+        m_pScoreDataObject = new ScoreData();
+
         // 単位当たりの得点を保存
         m_pScoreDataObject.m_nHighRateTargetHitScore = m_nHighScoreTargetPoint;
-        m_pScoreDataObject.m_nNomalRateTargetHitScore = m_nNormalScoreTargetPoint;
-        m_pScoreDataObject.m_nRowRateTargetHitScore = m_nRowScoreTargetPoint;
+        m_pScoreDataObject.m_nMiddleRateTargetHitScore = m_nMiddleScoreTargetPoint;
+        m_pScoreDataObject.m_nLowRateTargetHitScore = m_nLowScoreTargetPoint;
 
         // 得点を初期化
         m_pScoreDataObject.m_nTotalScore = 0;
@@ -58,16 +60,16 @@ public class ScoreDataManager : MonoBehaviour
                 }
 
             // 中得点
-            case TARGET_TYPE.NORMAL:
+            case TARGET_TYPE.MIDDLE:
                 {
-                    m_pScoreDataObject.m_nTotalScore += m_pScoreDataObject.m_nNomalRateTargetHitScore;
+                    m_pScoreDataObject.m_nTotalScore += m_pScoreDataObject.m_nMiddleRateTargetHitScore;
                     break;
                 }
 
             // 低得点
-            case TARGET_TYPE.ROW:
+            case TARGET_TYPE.LOW:
                 {
-                    m_pScoreDataObject.m_nTotalScore += m_pScoreDataObject.m_nRowRateTargetHitScore;
+                    m_pScoreDataObject.m_nTotalScore += m_pScoreDataObject.m_nLowRateTargetHitScore;
                     break;
                 }
         }
@@ -83,18 +85,18 @@ public class ScoreDataManager : MonoBehaviour
     // =======================================================================
     //                               基本関数
     // =======================================================================
+    void Awake()
+    {
+        SetInstance(this);
+    }
     // 初期化
-    // Start is called before the first frame update
     void Start()
     {
-        // スコアデータ初期化
         InitializeScoreData();
     }
 
     // 更新
-    // Update is called once per frame
     void Update()
     {
-        
     }
 }

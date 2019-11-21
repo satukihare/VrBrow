@@ -11,7 +11,7 @@ public class ScoreData : ScriptableObject
     [SerializeField]
     public int m_nHighRateTargetHitScore;   // 高得点的に当たった時のスコア
     [SerializeField]
-    public int m_nNomalRateTargetHitScore;  // 中得点的に当たった時のスコア
+    public int m_nMiddleRateTargetHitScore; // 中得点的に当たった時のスコア
     [SerializeField]
-    public int m_nRowRateTargetHitScore;    // 低得点的に当たった時のスコア
+    public int m_nLowRateTargetHitScore;    // 低得点的に当たった時のスコア
 }

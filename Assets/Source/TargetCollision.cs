@@ -2,6 +2,10 @@
 
 public class TargetCollision : MonoBehaviour
 {
+    [SerializeField] SphereCollider high;
+    [SerializeField] SphereCollider middle;
+    [SerializeField] SphereCollider low;
+
     void Start()
     {
         
@@ -9,12 +13,28 @@ public class TargetCollision : MonoBehaviour
 
     void Update()
     {
+        
     }
 
     void OnCollisionEnter(Collision other)
     {
         GameObject collisionObj = other.gameObject;
         if (!collisionObj.CompareTag("Arrow")) return;
+
+        switch(collisionObj.GetComponent<Arrow>().colliders.Count)
+        {
+            case 0:
+                break;
+            case 1:
+                ScoreDataManager.Instance.AddScore(ScoreDataManager.TARGET_TYPE.LOW);
+                break;
+            case 2:
+                ScoreDataManager.Instance.AddScore(ScoreDataManager.TARGET_TYPE.MIDDLE);
+                break;
+            case 3:
+                ScoreDataManager.Instance.AddScore(ScoreDataManager.TARGET_TYPE.HIGH);
+                break;
+        }
 
         Rigidbody[] rigs = collisionObj.GetComponentsInChildren<Rigidbody>();
         BoxCollider[] cols = collisionObj.GetComponentsInChildren<BoxCollider>();

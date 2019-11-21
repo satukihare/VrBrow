@@ -17,6 +17,8 @@ public class Arrow : MonoBehaviour
     CapsuleCollider m_CapsuleCollider;
     public Status m_Status;
 
+    public List<Collider> colliders { get; set; } = new List<Collider>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,5 +82,10 @@ public class Arrow : MonoBehaviour
         {
             transform.localPosition = new Vector3(-transform.localScale.y, 0, -0.02f);
         }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        colliders.Add(other);
     }
 }
