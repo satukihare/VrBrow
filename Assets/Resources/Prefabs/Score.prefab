@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1761929564849366779}
   - component: {fileID: 1761929564849366781}
   - component: {fileID: 1761929564849366778}
-  - component: {fileID: 1761929564849366780}
+  - component: {fileID: 9216594126985829350}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -55,7 +55,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1761929564849366776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -64,8 +64,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9f5eb372c8431bd43b61bd1d5de7ef8a, type: 3}
     m_FontSize: 50
@@ -80,7 +78,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New Text
---- !u!114 &1761929564849366780
+--- !u!114 &9216594126985829350
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,7 +87,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1761929564849366776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8737d1cb8c2e06478babe98efc7f343, type: 3}
+  m_Script: {fileID: 11500000, guid: 65972620b7fd6a848bd5a8255cfff97a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1761929565769314033
@@ -142,7 +140,7 @@ Canvas:
   m_GameObject: {fileID: 1761929565769314033}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -163,7 +161,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1761929565769314033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
@@ -185,7 +183,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1761929565769314033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
