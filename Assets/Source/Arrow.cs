@@ -12,6 +12,7 @@ public class Arrow : MonoBehaviour
        MAX,
     };
 
+    [SerializeField] float m_fLength;
     Bow m_Bow;
     Rigidbody m_Rigidbody;
     CapsuleCollider m_CapsuleCollider;
@@ -42,7 +43,7 @@ public class Arrow : MonoBehaviour
                 }
             case Status.HOLD:
                 {
-                    transform.localPosition = new Vector3(-m_Bow.GetDis() - transform.localScale.y, 0, -0.02f);
+                    transform.localPosition = new Vector3(-m_Bow.GetDis() - m_fLength, 0, -0.02f);
                     CheckLimit();
 
                     if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger))
@@ -74,13 +75,13 @@ public class Arrow : MonoBehaviour
 
     void CheckLimit()
     {
-        if (transform.localPosition.x > transform.localScale.y)
+        if (transform.localPosition.x > m_fLength)
         {
-            transform.localPosition = new Vector3(transform.localScale.y, 0, -0.02f);
+            transform.localPosition = new Vector3(m_fLength, 0, -0.02f);
         }
-        else if (transform.localPosition.x < -transform.localScale.y)
+        else if (transform.localPosition.x < -m_fLength)
         {
-            transform.localPosition = new Vector3(-transform.localScale.y, 0, -0.02f);
+            transform.localPosition = new Vector3(-m_fLength, 0, -0.02f);
         }
     }
 

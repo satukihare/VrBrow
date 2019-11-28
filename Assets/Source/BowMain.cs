@@ -36,7 +36,7 @@ public class BowMain : MonoBehaviour
         }
         arrow.m_Status = Arrow.Status.HOLD;
         other.gameObject.transform.parent = m_GObjBows.transform;
-        other.gameObject.transform.localEulerAngles = new Vector3(0, 0, 90);
+        other.gameObject.transform.localEulerAngles = new Vector3(0, -90, 0);
         other.gameObject.transform.localPosition = new Vector3(0, 0, 0);
     }
 
