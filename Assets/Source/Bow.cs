@@ -28,6 +28,12 @@ public class Bow : MonoBehaviour
         m_vFront = m_GObjMainPart.transform.position - m_vBasePoint;
 
         m_fDis = Vector3.Dot(m_vFront.normalized, m_GObjRightHand.transform.position - m_GObjLeftHand.transform.position);
+
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            GameObject go = Instantiate(Resources.Load("Prefabs/Arrow"), this.transform) as GameObject;
+            go.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 1000));
+        }
     }
 
     public float GetDis()
