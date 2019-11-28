@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // スコアデータテーブル
-[CreateAssetMenu(menuName = "MyGame/ScoreData ScoreTable", fileName = "../Data/ScoreTable")]
+[CreateAssetMenu(menuName = "MyGame/ScoreData ScoreTable", fileName = "ScoreTable")]
 public class ScoreData : ScriptableObject
 {
     [SerializeField]

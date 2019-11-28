@@ -17,6 +17,7 @@ public class Arrow : MonoBehaviour
     Rigidbody m_Rigidbody;
     CapsuleCollider m_CapsuleCollider;
     public Status m_Status;
+    public List<Collider> colliders { get; set; } = new List<Collider>();
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +45,13 @@ public class Arrow : MonoBehaviour
             case Status.HOLD:
                 {
                     transform.localPosition = new Vector3(-m_Bow.GetDis() - m_fLength, 0, -0.02f);
+
                     CheckLimit();
+
+                    if (Random.Range(0, 3) == 0)
+                    {
+                        OculusControllerVibrate.SetVibrateR(0.03f, 0.8f, 0.5f);
+                    }
 
                     if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger))
                     {

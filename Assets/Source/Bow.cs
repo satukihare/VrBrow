@@ -43,6 +43,6 @@ public class Bow : MonoBehaviour
 
     public Vector3 GetForce()
     {
-        return m_vFront.normalized * m_fDis * -1000;
+        return m_vFront.normalized * m_fDis * -2500;
     }
 }
