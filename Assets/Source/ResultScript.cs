@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ResultScript : MonoBehaviour
 {
+    public int score { get; set; }
+    public int star { get; }
+
     // Start is called before the first frame update
     void Start()
     {
