@@ -17,6 +17,7 @@ public class Arrow : MonoBehaviour
     Rigidbody m_Rigidbody;
     CapsuleCollider m_CapsuleCollider;
     public Status m_Status;
+    float m_fDis;
     public List<Collider> colliders { get; set; } = new List<Collider>();
 
     // Start is called before the first frame update
@@ -48,9 +49,13 @@ public class Arrow : MonoBehaviour
 
                     CheckLimit();
 
+                    // バイブレーション
+
+
                     if (Random.Range(0, 3) == 0)
                     {
-                        OculusControllerVibrate.SetVibrateR(0.03f, 0.8f, 0.5f);
+                        OculusControllerVibrate.SetVibrateL(0.03f * Random.Range(0.5f, 1.0f), m_fDis / (m_fLength * 2.0f), m_fDis / (m_fLength * 2.0f));
+                        OculusControllerVibrate.SetVibrateR(0.03f * Random.Range(0.5f, 1.0f), m_fDis / (m_fLength * 2.0f), m_fDis / (m_fLength * 2.0f));
                     }
 
                     if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger))
@@ -90,6 +95,8 @@ public class Arrow : MonoBehaviour
         {
             transform.localPosition = new Vector3(-m_fLength, 0, -0.02f);
         }
+
+        m_fDis = transform.localPosition.x + m_fLength;
     }
 
     void FallArrowTask()
