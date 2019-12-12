@@ -103,4 +103,9 @@ public class Arrow : MonoBehaviour
             m_Rigidbody.MoveRotation(Quaternion.LookRotation(falldir));
         }
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        colliders.Add(other);
+    }
 }

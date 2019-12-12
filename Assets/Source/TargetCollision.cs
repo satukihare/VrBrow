@@ -21,13 +21,13 @@ public class TargetCollision : MonoBehaviour
         {
             case 0:
                 break;
-            case 1:
+            case 2:
                 ScoreDataManager.Instance.AddScore(ScoreDataManager.TARGET_TYPE.LOW);
                 break;
-            case 2:
+            case 3:
                 ScoreDataManager.Instance.AddScore(ScoreDataManager.TARGET_TYPE.MIDDLE);
                 break;
-            case 3:
+            case 4:
                 ScoreDataManager.Instance.AddScore(ScoreDataManager.TARGET_TYPE.HIGH);
                 break;
         }
