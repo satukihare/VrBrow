@@ -20,7 +20,7 @@ public class Title_Manager : MonoBehaviour
     private bool            m_bTitleSwitch;                 // タイトル表示スイッチ
     private bool            m_bTitleShow;                   // タイトルが出きったかフラグ
     private bool            m_bTitleHide;                   // タイトルが消え切ったかフラグ
-
+    BoxCollider m_BoxCollider;
 
     //=====================================================================
     //                             メンバ関数
@@ -112,6 +112,7 @@ public class Title_Manager : MonoBehaviour
         // コンポーネント取得
         m_pTitleScalingComponent = m_pTitleRogoObject.GetComponent<Title_Scaling>();
         m_pCheckButtonFadeComponent = m_pCheckButtonRogoObject.GetComponent<Title_Fade>();
+        m_BoxCollider = GetComponent<BoxCollider>();
 
         // 変数初期化
         m_bTitleSwitch = true;
@@ -122,23 +123,36 @@ public class Title_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         // テスト
-        if(Input.GetKeyDown(KeyCode.Return))
-        {
-            if(m_bTitleSwitch)
-            {
-                TitleFlag(false);
-            }
-            else
-            {
-                TitleFlag(true);
-            }
-        }
+        //if(Input.GetKeyDown(KeyCode.Return))
+        //{
+        //    if(m_bTitleSwitch)
+        //    {
+        //        TitleFlag(false);
+        //    }
+        //    else
+        //    {
+        //        TitleFlag(true);
+        //    }
+        //}
 
         // タイトルアニメーション
         TitleAnimation();
 
         // タイトルの状態確認
         HideShowCheck();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Arrow"))
+        {
+            if (m_bTitleSwitch)
+            {
+                TitleFlag(false);
+                m_BoxCollider.enabled = false;
+            }
+        }
     }
 }
